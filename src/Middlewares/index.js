@@ -25,7 +25,7 @@ const verifyJwtToken = async (req,res,next) => {
           Authorization: req.headers.authorization || ""
         }
       }
-      const{ data} = await axios.post('http://localhost:8081/v1/jwt/verify', {}, config)
+      const{ data} = await axios.post(`${process.env.AUTH_SERVICE_HOST}/v1/jwt/verify`, {}, config)
       req.user = data
       next()
     } catch (e) {
